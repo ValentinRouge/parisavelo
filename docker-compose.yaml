@@ -2,17 +2,17 @@ version: "3"
 services:
     web:
         build: .
-        container_name: parisavelo 
+        container_name: parisavelo_front
         labels: 
             - "traefik.enable=true"
-            - "traefik.http.routers.parisavelo-secured.entrypoints=websecure"
-            - "traefik.http.routers.parisavelo-secured.rule=Host(`parisavelo.leverry.fr`)"
-            - "traefik.http.routers.parisavelo-secured.tls.certresolver=myhttpchallenge"
+            - "traefik.http.routers.parisavelo_front-secured.entrypoints=websecure"
+            - "traefik.http.routers.parisavelo_front-secured.rule=Host(`parisavelo.leverry.fr`)"
+            - "traefik.http.routers.parisavelo_front-secured.tls.certresolver=myhttpchallenge"
             #redirection 
             - "traefik.http.middlewares.redirect.redirectscheme.scheme=https"
-            - "traefik.http.routers.parisavelo.rule=Host(`parisavelo.leverry.fr`)"
-            - "traefik.http.routers.parisavelo.entrypoints=web"
-            - "traefik.http.routers.parisavelo.middlewares=redirect"
+            - "traefik.http.routers.parisavelo_front.rule=Host(`parisavelo.leverry.fr`)"
+            - "traefik.http.routers.parisavelo_front.entrypoints=web"
+            - "traefik.http.routers.parisavelo_front.middlewares=redirect"
         networks: 
             - "web"
 networks: 
