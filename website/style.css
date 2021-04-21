@@ -85,19 +85,32 @@ h1
     overflow-y: auto;
     height: 70%;
 }
-.IOSpopup{
-    position: fixed;
-    margin-top: 110%;
-    margin-left: 15%;
-    width : 70%;
-    background-color: rgb(243, 243, 243);
-    padding: 1em;
-    border-radius: 5px;
-    overflow-y: auto;
-    height: 5rem;
+.popupTEST .popuptextTEST{
+    position: absolute;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
     z-index: 1;
-    display: none;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+    visibility: hidden;
 }
+.popupTEST {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.popupTEST .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+
 .btnClose {
     position: absolute;
     top: 0;

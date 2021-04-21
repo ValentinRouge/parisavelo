@@ -41,6 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
         IOSpopup.style.display='none';
     }
 
+    function myFunction() {
+        var popup = document.getElementById("myPopupTEST");
+        popup.classList.toggle("show");
+      }
+
     // Detects if device is on iOS 
     const isIos = () => {
         const userAgent = window.navigator.userAgent.toLowerCase();
