@@ -16,7 +16,7 @@ services:
         networks: 
             - "web"
         volumes: 
-            - ./data:/usr/share/nginx/html/data
+            - ./website/data:/usr/share/nginx/html/data
 networks: 
     web: 
         external: true
