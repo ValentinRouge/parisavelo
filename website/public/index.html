@@ -7,9 +7,8 @@
     <title>Document</title>
 </head>
 <body >
-    <div class="flex flex-col h-full">
-        
-        <header class="flex flex-row flex-wrap items-center justify-end bg-gradient-to-b from-gray-200 to-gray-500">
+    <div class="flex flex-col h-full">    
+        <header class="flex flex-row flex-wrap items-center justify-end bg-gradient-to-b from-gray-200 to-gray-500 z-50">
             <div class="flex-grow">
                 <div class="flex justify-between items-center">
                     <h1 class="flex-grow text-3xl p-3 text-center">Paris à Vélo</h1>
@@ -39,14 +38,27 @@
                 </div>
             </nav>
         </header>
-        
+        <script src="script.js"></script>
 
-        <main class="flex-grow w-full">
-            <!--<iframe  class="w-full h-full" allowfullscreen src="https://umap.openstreetmap.fr/fr/map/paris-a-velo_506457?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=true&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&datalayers=1423631%2C1423632%2C1423630%2C1423629">
-            -->
+        <main class="relative flex-grow w-full">
+
+            <div class="absolute top-0 right-0 z-50 bg-white overflow-auto w-full sm:w-1/2 md:w-80">
+                <div class="relative">
+                    <div class="absolute top-0 right-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                    </div>
+                    <p>fezo g jisqgkjsqgjs </p>
+                    <p>fhdigsdqkls gdsjg sqklk </p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                </div>
+            </div>
+
+            <iframe  class="w-full h-full z-0" allowfullscreen src="https://umap.openstreetmap.fr/fr/map/paris-a-velo_506457?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=true&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&datalayers=1423631%2C1423632%2C1423630%2C1423629">
+            
         </main>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
