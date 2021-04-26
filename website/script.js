@@ -1,59 +1,56 @@
-if('serviceWorker' in navigator) {
-    navigator.serviceWorker
-        .register('sw.js', { scope: '' })
-        .then(function(registration) {
-            console.log('Service Worker enregistré');
-        });
-
-    navigator.serviceWorker
-        .ready
-        .then(function(registration) {
-            console.log('Service Worker prêt');
-        });
+/*service worker*/
+if ('serviceWorker' in navigator){
+    navigator.serviceWorker.register('./sw.js')
+    .then((reg) => console.log('service worker register', reg))
+    .catch((err) => console.log('service worker not register', err))
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    const menuBTN = document.querySelector("#menuBTN");
+    const navBar = document.querySelector("#navbar");
+    const icon = document.querySelector("#icon");
+    const legendePOPUP = document.querySelector("#legendePOPUP")
+    const legendeBTN = document.querySelector("#legendeBTN")
+    const PClegendeBTN = document.querySelector("#PClegendeBTN")
+    const closeBTN_legendePOPUP = document.querySelector("#closeBTN_legendePOPUP")
+    const aproposPOPUP = document.querySelector("#aproposPOPUP")
+    const aproposBTN = document.querySelector("#aproposBTN")
+    const PCaproposBTN = document.querySelector("#PCaproposBTN")
+    const closeBTN_aproposPOPUP = document.querySelector("#closeBTN_aproposPOPUP")
 
-    var btnPopup = document.getElementById('btnPopup');
-    var overlay = document.getElementById('overlay');
-    var btnClose = document.getElementById('btnClose');
-    var IOSpopup = document.getElementById('IOSpopup');
-    var IOSbtnClose = document.getElementById('IOSbtnClose')
 
-    if (btnPopup){
-        btnPopup.addEventListener('click', openPop);
-    }
-    if (btnClose){
-        btnClose.addEventListener('click',closePop);
-    }
+    PClegendeBTN.addEventListener('click', () => {
+        legendePOPUP.classList.remove("hidden")
+    })
 
-    if (IOSbtnClose){
-        IOSbtnClose.addEventListener('click',closeIOSpop)
-    }
+    legendeBTN.addEventListener('click', () => {
+        legendePOPUP.classList.remove("hidden")
+    })
 
-    function openPop(){
-        overlay.style.display='block';
-    }
-    function closePop(){
-        overlay.style.display='none';
-    }
-    function closeIOSpop(){
-        IOSpopup.style.display='none';
-    }
+    closeBTN_legendePOPUP.addEventListener('click', () => {
+        legendePOPUP.classList.add("hidden")
+    })
 
-    // Detects if device is on iOS 
-    const isIos = () => {
-        const userAgent = window.navigator.userAgent.toLowerCase();
-        return /iphone|ipad|ipod/.test( userAgent );
-    }
-    // Detects if device is in standalone mode
-    const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
 
-    // Checks if should display install popup notification:
-    if (isIos() && !isInStandaloneMode()) {
-        this.setState(IOSpopup.style.display='block');
-    }
+    PCaproposBTN.addEventListener('click', () => {
+        aproposPOPUP.classList.remove("hidden")
+    })
+
+    aproposBTN.addEventListener('click', () => {
+        aproposPOPUP.classList.remove("hidden")
+    })
+
+    closeBTN_aproposPOPUP.addEventListener('click', () => {
+        aproposPOPUP.classList.add("hidden")
+    })
+
+    menuBTN.addEventListener('click', () => {
+        navBar.classList.toggle("hidden");
+        icon.classList.toggle("transition");
+        icon.classList.toggle("transform");
+        icon.classList.toggle("-rotate-90"); 
+    })
+
+
 })
 
-
-  

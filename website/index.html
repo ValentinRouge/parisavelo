@@ -1,97 +1,151 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <link rel="stylesheet" href="style.css" />
-        <link rel="manifest" href="manifest.json">
-        <link rel="icon" href="logo/512.ico" type="image/x-icon">
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Paris à Vélo</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="logo/512.ico" type="image/x-icon">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="logo/512.ico">
+    <link rel="apple-touch-icon" sizes="152x152" href="logo/152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo/180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="logo/167.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="logo/120.png">
+</head>
+<body >
+    <div class="flex flex-col h-full">    
+        <header class="flex flex-row flex-wrap items-center justify-end bg-gradient-to-b from-gray-200 to-gray-500 z-50">
+            <div class="flex-grow">
+                <div class="flex justify-between items-center">
+                    <h1 class="flex-grow text-3xl p-3 text-center font-extrabold">Paris à Vélo</h1>
+                    <div class="px-2 cursor-pointer md:hidden" id="menuBTN">
+                        <svg class="w-8" id= "icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="hidden text-right mr-3" id="navbar">
+                    <div>
+                        <button class="-mt-1 mb-1 py-1 px-2 border-2 text-gray-600 rounded-lg border-gray-600 bg-gray-300 hover:bg-gray-500 hover:text-white active:bg-gray-900 focus:outline-none transition duration-300" id="PClegendeBTN">Légende</button>
+                    </div> <!---->
+                    <div>
+                        <button class="mb-1 py-1 px-2 border-2 text-gray-600 rounded-lg border-gray-600 bg-gray-300 hover:bg-gray-500 hover:text-white active:bg-gray-900 focus:outline-none transition duration-300" id="PCaproposBTN">A propos</button>
+                    </div> <!---->
+                </div>
+            </div>
+            
+            
+            
+            <nav class="hidden md:block"> <!--ensenble des 2 btn pr nav-->
+                <div class="text-lg -space-x-1.5 mr-3"> 
+                    <button class="py-1 px-2 border-2 text-gray-600 rounded-lg rounded-r-none border-gray-600 bg-gray-300 hover:bg-gray-500 hover:text-white active:bg-gray-900 focus:outline-none transition duration-300" id="legendeBTN">Légende</button>
+                    <button class="py-1 px-2 border-2 text-gray-600 rounded-lg rounded-l-none border-gray-600 bg-gray-300 hover:bg-gray-500 hover:text-white active:bg-gray-900 focus:outline-none transition duration-300" id="aproposBTN">A propos</button>
+                </div>
+            </nav>
+        </header>
         <script src="script.js"></script>
-        <title>Paris à vélo</title>
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <link rel="apple-touch-icon" href="logo/512.ico">
-        <link rel="apple-touch-icon" sizes="152x152" href="logo/152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="logo/180.png">
-        <link rel="apple-touch-icon" sizes="167x167" href="logo/167.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="logo/120.png">
-  
-    </head>
-    <body>
-        <figure id="Top_Bar">
-            <button id = "btnPopup" class="btnPopup">Afficher informations</button>
-            <h1>Paris à Vélo</h1>
-        </figure>
-        <div id = "overlay" class="overlay">
-            <div id="popup" class="popup">
-                <h2>
+
+        <main class="relative flex-grow w-full">
+           
+            <!--popup Légende-->
+            <div class="relative hidden popup" id="legendePOPUP">
+                <!--icon-->
+                <div class="sticky w-full top-0" id="closeBTN_legendePOPUP">
+                    <div class="flex flex-row-reverse ">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold -mt-10 mb-1">
                     Légende
                 </h2>
-                <span id='btnClose' class="btnClose">&times;</span>
-                <div id="container">
-                    <img src="images/logo_parking.png" alt="une bulle verte avec un logo vélo" id="img_legende" title="pictogramme parking">
-                    <div id = "Légende">
+                <div class="flex flex-wrap items-center">
+                    <img class="h-10 mr-2 my-1" src="../images/logo_parking.png" alt="une bulle verte avec un logo vélo" id="img_legende" title="pictogramme parking">
+                    <p class="text-justify">
                         Les arceaux a vélo
-                    </div>
+                    </p>
                 </div>
-                <div id="container">
-                    <img src="images/logo_reparation.png" alt="une bulle rouge avec des outils" id="img_legende" title="pictogramme station de réparation">
-                    <div id = "Légende">
+                <div class="flex items-center">
+                    <img class="h-10 mr-2 my-1" src="../images/logo_reparation.png" alt="une bulle rouge avec des outils" id="img_legende" title="pictogramme station de réparation">
+                    <p class="text-justify">
                         Les pompes à vélo en libre service (souvent station de réparation ou véloboxe)
-                    </div>
+                    </p>
                 </div>
-                <div id="container">
-                    <img src="images/logo_fontaine.png" alt="une bulle bleu claire avec un verre d'eau" id="img_legende" title="pictogramme fontaine">
-                    <div id = "Légende">
+                <div class="flex items-center">
+                    <img class="h-10 mr-2 my-1" src="../images/logo_fontaine.png" alt="une bulle bleu claire avec un verre d'eau" id="img_legende" title="pictogramme fontaine">
+                    <p class="text-justify">
                         Les fontaines
-                    </div>
+                    </p>
                 </div>
-                <div id="container">  
-                    <img src="images/logo_toilettes.png" alt="une bulle bleu foncée avec un logo toilettes" id="img_legende" title="pictogramme toilettes">
-                    <div id = "Légende">
+                <div class="flex items-center">  
+                    <img class="h-10 mr-2 my-1" src="../images/logo_toilettes.png" alt="une bulle bleu foncée avec un logo toilettes" id="img_legende" title="pictogramme toilettes">
+                    <p class="text-justify">
                         Les toilettes (souvent accompagné d'un point d'eau, notamment à l'arrière des sanisettes)
-                    </div>
+                    </p>
                 </div>
-                <div id="container">
-                    <img src="images/logo_velib.png" alt="une bulle jaune avec le logo vélib" id="img_legende" title="pictogramme station vélib">
-                    <div id = "Légende">
+                <div class="flex items-center">
+                    <img class="h-10 mr-2 my-1" src="../images/logo_velib.png" alt="une bulle jaune avec le logo vélib" id="img_legende" title="pictogramme station vélib">
+                    <p class="text-justify">
                         Les stations vélib
-                    </div>
+                    </p>
                 </div>
-                <h2>
+            </div> <!--popup légende-->
+
+           <!--popup A propos-->
+           <div class="relative hidden popup" id="aproposPOPUP">
+            <!--icon-->
+            <div class="sticky w-full top-0" id="closeBTN_aproposPOPUP">
+                <div class="flex flex-row-reverse ">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-bold -mt-10 mb-1">
+                À propos
+            </h2>
+            <div class="text-justify">
+                <h3 class="text-xl font-semibold mt-4">
                     Informations
-                </h2>
-                <div>
-                    Données issues d'openstreetmap (données sous licence <a href="www.openstreetmap.org/copyright"> Open Database</a>, <a href="https://www.openstreetmap.fr/contribuer/     ">découvrez comment contribuer</a>) ou de l'opendata de la 
-                    marie de Paris (sous licence ODdL). <br>
-                    Fond de carte <a href="www.cyclosm.org">cyclosm</a>. <br>
-                    La carte est disponible sous forme de webapp pour les appareils compatible. Voir comment l'intaller pour 
-                </div>
+                </h3>
+                <p class="mb-2">
+                    Ce site permet de repérer facilement certains lieux utiles au quotidien pour les cyclistes de Paris et de sa banlieue en proposant une carte interactive des arceaux vélos, des fontaines, des stations de réparation, des toilettes ainsi que des stations vélib. 
+                </p>
+                <p class="mb-2">
+                    Les données sont issues d'<a href="https://www.openstreetmap.org/copyright">openstreetmap</a> (<a href="https://www.openstreetmap.fr/contribuer/">découvrez comment contribuer</a>) ainsi que de l'open data de la mairie de Paris (sous licence <a href="https://opendata.paris.fr/page/lalicence/">OBdL</a>).
+                </p>    
+                <p>
+                    Les données sont mises à jour quotidiennement. 
+                </p>
+                <h3 class="text-xl font-semibold mt-4">
+                    Mentions légales
+                </h3>
+                <p>
+                    Site web hébargé chez OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.
+                </p>
+                <h3 class="text-xl font-semibold mt-4">
+                    Contact
+                </h3>
+                <p>
+                    <a href="mailto:rougevalentin@icloud.com">Mail</a>, <a href="https://twitter.com/Valred7">Twitter</a>
+                </p>
             </div>
-        </div>
-        <div id="IOSpopup" class="IOSpopup">
-            <span id='IOSbtnClose' class="btnClose">&times;</span>
-            <div class="justifedText">
-                La carte est disponible sous forme de webapp pour les appareils compatible. Pour l'installer sur votre appareil appuyez sur le bouton partager puis ajouter à l'écran d'accueil.
-            </div>
-        </div>
-        <iframe frameborder="0" allowfullscreen src="https://umap.openstreetmap.fr/fr/map/paris-a-velo_506457?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=true&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&datalayers=1423631%2C1423632%2C1423630%2C1423629">
-        
-        <!-- Code du service Worker (mode hors ligne)-->
-        <script>
-            if('serviceWorker' in navigator) {
-                navigator.serviceWorker
-                    .register('/sw.js', { scope: '/' })
-                    .then(function(registration) {
-                        console.log('Service Worker enregistré');
-                    });
-        
-                navigator.serviceWorker
-                    .ready
-                    .then(function(registration) {
-                        console.log('Service Worker prêt');
-                    });
-            }
-        </script>        
-    </body>	
+
+
+            
+        </div> <!--popup à propos-->
+
+            <iframe  class="w-full h-full z-0" allowfullscreen src="https://umap.openstreetmap.fr/fr/map/paris-a-velo_506457?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=true&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&datalayers=1423631%2C1423632%2C1423630%2C1423629">
+            
+        </main>
+    </div>
+
+</body>
 </html>
