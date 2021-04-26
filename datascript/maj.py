@@ -59,12 +59,8 @@ def updateFontaines(url):
 if os.path.isfile("url.json")==True:
     with open("url.json") as url_file:
         urls=json.load(url_file)
-elif os.path.isfile("datascript/url.json")==True:
-    with open("datascript/url.json") as url_file:
-        urls=json.load(url_file)
 
-print(urls)
-os.chdir("website/data")
+os.chdir("../website/data")
 
 updateToilets(urls["toilettes"])
 updateVelib(urls["velib"])
