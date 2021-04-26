@@ -31905,6 +31905,62 @@ video {
   --tw-drop-shadow: drop-shadow(0 0 #0000);
 }
 
+.hover\:drop-shadow-sm:hover {
+  --tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+}
+
+.hover\:drop-shadow:hover {
+  --tw-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+}
+
+.hover\:drop-shadow-md:hover {
+  --tw-drop-shadow: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+}
+
+.hover\:drop-shadow-lg:hover {
+  --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+}
+
+.hover\:drop-shadow-xl:hover {
+  --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+}
+
+.hover\:drop-shadow-2xl:hover {
+  --tw-drop-shadow: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+}
+
+.hover\:drop-shadow-none:hover {
+  --tw-drop-shadow: drop-shadow(0 0 #0000);
+}
+
+.active\:drop-shadow-sm:active {
+  --tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+}
+
+.active\:drop-shadow:active {
+  --tw-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+}
+
+.active\:drop-shadow-md:active {
+  --tw-drop-shadow: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+}
+
+.active\:drop-shadow-lg:active {
+  --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+}
+
+.active\:drop-shadow-xl:active {
+  --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+}
+
+.active\:drop-shadow-2xl:active {
+  --tw-drop-shadow: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+}
+
+.active\:drop-shadow-none:active {
+  --tw-drop-shadow: drop-shadow(0 0 #0000);
+}
+
 .grayscale-0 {
   --tw-grayscale: grayscale(0);
 }
@@ -32262,6 +32318,39 @@ video {
 
 .backdrop-sepia {
   --tw-backdrop-sepia: sepia(100%);
+}
+
+.popup{
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  height: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
+  padding: 0.75rem;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  z-index: 50;
+}
+
+@media (min-width: 640px) {
+  .popup {
+    height: auto;
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .popup {
+    width: 33.333333%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .popup {
+    width: 25%;
+  }
 }
 
 @media (min-width: 640px) {
@@ -63537,6 +63626,62 @@ video {
   }
 
   .sm\:drop-shadow-none {
+    --tw-drop-shadow: drop-shadow(0 0 #0000);
+  }
+
+  .sm\:hover\:drop-shadow-sm:hover {
+    --tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+  }
+
+  .sm\:hover\:drop-shadow:hover {
+    --tw-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  }
+
+  .sm\:hover\:drop-shadow-md:hover {
+    --tw-drop-shadow: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  }
+
+  .sm\:hover\:drop-shadow-lg:hover {
+    --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  }
+
+  .sm\:hover\:drop-shadow-xl:hover {
+    --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+  }
+
+  .sm\:hover\:drop-shadow-2xl:hover {
+    --tw-drop-shadow: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+  }
+
+  .sm\:hover\:drop-shadow-none:hover {
+    --tw-drop-shadow: drop-shadow(0 0 #0000);
+  }
+
+  .sm\:active\:drop-shadow-sm:active {
+    --tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+  }
+
+  .sm\:active\:drop-shadow:active {
+    --tw-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  }
+
+  .sm\:active\:drop-shadow-md:active {
+    --tw-drop-shadow: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  }
+
+  .sm\:active\:drop-shadow-lg:active {
+    --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  }
+
+  .sm\:active\:drop-shadow-xl:active {
+    --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+  }
+
+  .sm\:active\:drop-shadow-2xl:active {
+    --tw-drop-shadow: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+  }
+
+  .sm\:active\:drop-shadow-none:active {
     --tw-drop-shadow: drop-shadow(0 0 #0000);
   }
 
@@ -95084,6 +95229,62 @@ video {
     --tw-drop-shadow: drop-shadow(0 0 #0000);
   }
 
+  .md\:hover\:drop-shadow-sm:hover {
+    --tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+  }
+
+  .md\:hover\:drop-shadow:hover {
+    --tw-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  }
+
+  .md\:hover\:drop-shadow-md:hover {
+    --tw-drop-shadow: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  }
+
+  .md\:hover\:drop-shadow-lg:hover {
+    --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  }
+
+  .md\:hover\:drop-shadow-xl:hover {
+    --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+  }
+
+  .md\:hover\:drop-shadow-2xl:hover {
+    --tw-drop-shadow: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+  }
+
+  .md\:hover\:drop-shadow-none:hover {
+    --tw-drop-shadow: drop-shadow(0 0 #0000);
+  }
+
+  .md\:active\:drop-shadow-sm:active {
+    --tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+  }
+
+  .md\:active\:drop-shadow:active {
+    --tw-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  }
+
+  .md\:active\:drop-shadow-md:active {
+    --tw-drop-shadow: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  }
+
+  .md\:active\:drop-shadow-lg:active {
+    --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  }
+
+  .md\:active\:drop-shadow-xl:active {
+    --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+  }
+
+  .md\:active\:drop-shadow-2xl:active {
+    --tw-drop-shadow: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+  }
+
+  .md\:active\:drop-shadow-none:active {
+    --tw-drop-shadow: drop-shadow(0 0 #0000);
+  }
+
   .md\:grayscale-0 {
     --tw-grayscale: grayscale(0);
   }
@@ -126625,6 +126826,62 @@ video {
   }
 
   .lg\:drop-shadow-none {
+    --tw-drop-shadow: drop-shadow(0 0 #0000);
+  }
+
+  .lg\:hover\:drop-shadow-sm:hover {
+    --tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+  }
+
+  .lg\:hover\:drop-shadow:hover {
+    --tw-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  }
+
+  .lg\:hover\:drop-shadow-md:hover {
+    --tw-drop-shadow: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  }
+
+  .lg\:hover\:drop-shadow-lg:hover {
+    --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  }
+
+  .lg\:hover\:drop-shadow-xl:hover {
+    --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+  }
+
+  .lg\:hover\:drop-shadow-2xl:hover {
+    --tw-drop-shadow: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+  }
+
+  .lg\:hover\:drop-shadow-none:hover {
+    --tw-drop-shadow: drop-shadow(0 0 #0000);
+  }
+
+  .lg\:active\:drop-shadow-sm:active {
+    --tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+  }
+
+  .lg\:active\:drop-shadow:active {
+    --tw-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  }
+
+  .lg\:active\:drop-shadow-md:active {
+    --tw-drop-shadow: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  }
+
+  .lg\:active\:drop-shadow-lg:active {
+    --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  }
+
+  .lg\:active\:drop-shadow-xl:active {
+    --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+  }
+
+  .lg\:active\:drop-shadow-2xl:active {
+    --tw-drop-shadow: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+  }
+
+  .lg\:active\:drop-shadow-none:active {
     --tw-drop-shadow: drop-shadow(0 0 #0000);
   }
 
@@ -158172,6 +158429,62 @@ video {
     --tw-drop-shadow: drop-shadow(0 0 #0000);
   }
 
+  .xl\:hover\:drop-shadow-sm:hover {
+    --tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+  }
+
+  .xl\:hover\:drop-shadow:hover {
+    --tw-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  }
+
+  .xl\:hover\:drop-shadow-md:hover {
+    --tw-drop-shadow: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  }
+
+  .xl\:hover\:drop-shadow-lg:hover {
+    --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  }
+
+  .xl\:hover\:drop-shadow-xl:hover {
+    --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+  }
+
+  .xl\:hover\:drop-shadow-2xl:hover {
+    --tw-drop-shadow: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+  }
+
+  .xl\:hover\:drop-shadow-none:hover {
+    --tw-drop-shadow: drop-shadow(0 0 #0000);
+  }
+
+  .xl\:active\:drop-shadow-sm:active {
+    --tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+  }
+
+  .xl\:active\:drop-shadow:active {
+    --tw-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  }
+
+  .xl\:active\:drop-shadow-md:active {
+    --tw-drop-shadow: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  }
+
+  .xl\:active\:drop-shadow-lg:active {
+    --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  }
+
+  .xl\:active\:drop-shadow-xl:active {
+    --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+  }
+
+  .xl\:active\:drop-shadow-2xl:active {
+    --tw-drop-shadow: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+  }
+
+  .xl\:active\:drop-shadow-none:active {
+    --tw-drop-shadow: drop-shadow(0 0 #0000);
+  }
+
   .xl\:grayscale-0 {
     --tw-grayscale: grayscale(0);
   }
@@ -189713,6 +190026,62 @@ video {
   }
 
   .\32xl\:drop-shadow-none {
+    --tw-drop-shadow: drop-shadow(0 0 #0000);
+  }
+
+  .\32xl\:hover\:drop-shadow-sm:hover {
+    --tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+  }
+
+  .\32xl\:hover\:drop-shadow:hover {
+    --tw-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  }
+
+  .\32xl\:hover\:drop-shadow-md:hover {
+    --tw-drop-shadow: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  }
+
+  .\32xl\:hover\:drop-shadow-lg:hover {
+    --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  }
+
+  .\32xl\:hover\:drop-shadow-xl:hover {
+    --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+  }
+
+  .\32xl\:hover\:drop-shadow-2xl:hover {
+    --tw-drop-shadow: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+  }
+
+  .\32xl\:hover\:drop-shadow-none:hover {
+    --tw-drop-shadow: drop-shadow(0 0 #0000);
+  }
+
+  .\32xl\:active\:drop-shadow-sm:active {
+    --tw-drop-shadow: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+  }
+
+  .\32xl\:active\:drop-shadow:active {
+    --tw-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  }
+
+  .\32xl\:active\:drop-shadow-md:active {
+    --tw-drop-shadow: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  }
+
+  .\32xl\:active\:drop-shadow-lg:active {
+    --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  }
+
+  .\32xl\:active\:drop-shadow-xl:active {
+    --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+  }
+
+  .\32xl\:active\:drop-shadow-2xl:active {
+    --tw-drop-shadow: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+  }
+
+  .\32xl\:active\:drop-shadow-none:active {
     --tw-drop-shadow: drop-shadow(0 0 #0000);
   }
 

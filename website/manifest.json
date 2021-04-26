@@ -1,0 +1,41 @@
+{
+    "name": "Paris à vélo",
+    "short_name" : "Paris à vélo",
+    "lang" : "fr",
+    "start_url" : "/",
+    "display" : "standalone",
+    "background_color" : "#FFFFFF",
+    "theme_color" : "#FFFFFF",
+    "icons":[
+        {
+            "src" : "logo/120.png",
+            "type" : "image/png",
+            "sizes" : "120x120"
+        },
+        {
+            "src" : "logo/152.png",
+            "type" : "image/png",
+            "sizes" : "152x152"
+        },
+        {
+            "src" : "logo/167.png",
+            "type" : "image/png",
+            "sizes" : "167x167"
+        },
+        {
+            "src" : "logo/180.png",
+            "type" : "image/png",
+            "sizes" : "180x180"
+        },
+        {
+            "src" : "logo/192.png",
+            "type" : "image/png",
+            "sizes" : "192x192"
+        },
+        {
+            "src" : "logo/512.png",
+            "type" : "image/png",
+            "sizes" : "512x152"
+        }
+    ]
+}
