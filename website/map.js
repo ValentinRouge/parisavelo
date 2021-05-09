@@ -1,10 +1,9 @@
-var mymap = L.map('map').setView([48.86, 2.3488000], 13);
+const mymap = L.map('map').setView([48.86, 2.3488000], 13);
 
 L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
     maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
     minZoom: 0,
-    maxZoom: 19,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
 }).addTo(mymap);
 
 
@@ -16,7 +15,7 @@ function onLocationFound(e) {
 
     L.marker(e.latlng).addTo(mymap);
 
-    mymap.stopLocate()
+    mymap.stopLocate();
 }
 
 function onLocationError(e) {
@@ -27,48 +26,126 @@ mymap.on('locationerror', onLocationError);
 
 mymap.on('locationfound', onLocationFound);
 
-var markers = L.markerClusterGroup({
+
+
+
+
+const ToiletMarkers = L.markerClusterGroup({
     iconCreateFunction: function(cluster) {
-        return new L.DivIcon({ html: '<div><span>' + cluster.getChildCount() + '</span></div>', className: 'toilet-cluster', iconSize: new L.Point(40, 40) });
+        return new L.DivIcon({ html: '<div><span>' + cluster.getChildCount() + '</span></div>', className: 'toilet-cluster cluster', iconSize: new L.Point(40, 40) });
 	}
-})
+});
 
-
-
-
-var ToiletIcon = L.icon({
+const ToiletIcon = L.icon({
     iconUrl: "images/restroom.png", 
-    iconSize: [40,40]
-})
+    iconSize: [40,40], 
+    iconAnchor: [20,20]
+});
 
-var loc = [];
-
-fetch('./data/sanisettesparis.geojson')
-    .then(results => { data = results.json()
-        .then(data => {
-            features = data["features"]
-            for (n in features){
-                loc.push(features[n]["geometry"]["coordinates"])
-            }
-            for (lglat in loc){
-                lL = L.latLng(loc[lglat][0][1],loc[lglat][0][0])
-                try{
-                    markers.addLayer(L.marker(lL, {icon: ToiletIcon}));
-                }
-                catch(err) {
-                    console.log(err)
-                    console.log(lL)
-                }
-            }
-            console.log('OK')
-            mymap.addLayer(markers);
-        })
-    
-    })
+async function fetchToiletsData() {
+    const loc = [];
+    const features = (await (await fetch('./data/toilettesPARIS.geojson')).json()).features;
+    for (let feature of features){
+        const element = [];
+        element.push(...feature.geometry.coordinates);
+        element.push(feature.properties.horaire);
+        loc.push(element);
+    }
+    for (let locEl of loc){
+        const lL = L.latLng(locEl[0][1], locEl[0][0]);
+        try{
+            ToiletMarkers.addLayer(L.marker(lL, {icon: ToiletIcon}).bindPopup('<b>Toilettes</b><br>Horaires : '+ locEl[1]));
+        }
+        catch(err) {
+            console.log(err);
+            console.log(lL);
+        }
+    }
+    mymap.addLayer(ToiletMarkers);
+}
 
 
-
+fetchToiletsData();
 
 
 
+const FontaineMarkers = L.markerClusterGroup({
+    iconCreateFunction: function(cluster) {
+        return new L.DivIcon({ html: '<div><span>' + cluster.getChildCount() + '</span></div>', className: 'fountain-cluster cluster', iconSize: new L.Point(40, 40) });
+	}
+});
 
+const FontaineIcon = L.icon({
+    iconUrl: "images/fontaine.png", 
+    iconSize: [40,40], 
+    iconAnchor: [20,20]
+});
+
+async function fetchFontainesData() {
+    const loc = [];
+    const features = (await (await fetch('./data/fontainesPARIS.geojson')).json()).features;
+    for (let feature of features){
+        const element = [];
+        element.push(...feature.geometry.coordinates);
+        element.push(feature.properties.dispo);
+        loc.push(element);
+    }
+    for (let locEl of loc){
+        const lL = L.latLng(locEl[1], locEl[0]);
+        try{
+            FontaineMarkers.addLayer(L.marker(lL, {icon: FontaineIcon}).bindPopup('<b>Toilettes</b><br>Disponible : '+ locEl[2]));
+        }
+        catch(err) {
+            console.log(err);
+            console.log(lL);
+        }
+    }
+    mymap.addLayer(FontaineMarkers);
+}
+
+
+fetchFontainesData();
+
+
+const ParkingMarkers = L.markerClusterGroup({
+    iconCreateFunction: function(cluster) {
+        return new L.DivIcon({ html: '<div><span>' + cluster.getChildCount() + '</span></div>', className: 'parking-cluster cluster', iconSize: new L.Point(40, 40) });
+	}
+});
+
+const ParkingIcon = L.icon({
+    iconUrl: "images/parking2.png", 
+    iconSize: [30,30], 
+    iconAnchor: [15,15]
+});
+
+async function fetchParkingData() {
+    const loc = [];
+    const elements = (await (await fetch('./data/parkingIDF.json')).json()).elements;
+    for (let element of elements){
+        const parking = [];
+        parking.push(element.lat);
+        parking.push(element.lon);
+        try 
+        {
+            parking.push(element.tags.capacity);
+        }
+        catch
+        {
+            parking.push('inconnue');
+        }
+        loc.push(parking);
+    }
+    for (let locEl of loc){
+        const lL = L.latLng(locEl[0], locEl[1]);
+        try{
+            ParkingMarkers.addLayer(L.marker(lL, {icon: ParkingIcon}).bindPopup('<b>Parking a vélo</b><br>Nombre de places : '+ locEl[2]));
+        }
+        catch(err) {
+            console.log(err);
+            console.log(lL);
+        }
+    }
+    mymap.addLayer(ParkingMarkers);
+}
+fetchParkingData();
