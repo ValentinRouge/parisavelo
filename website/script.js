@@ -1,11 +1,11 @@
 /*service worker*/
-
+/*
 if ('serviceWorker' in navigator){
     navigator.serviceWorker.register('./sw.js')
     .then((reg) => console.log('service worker register', reg))
     .catch((err) => console.log('service worker not register', err))
 }
-
+*/
 document.addEventListener('DOMContentLoaded', function() {
     const menuBTN = document.querySelector("#menuBTN");
     const navBar = document.querySelector("#navbar");

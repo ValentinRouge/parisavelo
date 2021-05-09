@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html class="h-full w-full">
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -16,6 +16,19 @@
     <link rel="apple-touch-icon" sizes="180x180" href="logo/180.png">
     <link rel="apple-touch-icon" sizes="167x167" href="logo/167.png">
     <link rel="apple-touch-icon" sizes="120x120" href="logo/120.png">
+    <!--Leaflet-->
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+   <link rel="stylesheet" href="leaflet/cluster.css">
+
+   
 </head>
 <body >
     <div class="flex flex-col h-full">    
@@ -102,49 +115,51 @@
            <!--popup A propos-->
            <div class="relative hidden popup" id="aproposPOPUP">
             <!--icon-->
-            <div class="sticky w-full top-0" id="closeBTN_aproposPOPUP">
-                <div class="flex flex-row-reverse ">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
+                <div class="sticky w-full top-0" id="closeBTN_aproposPOPUP">
+                    <div class="flex flex-row-reverse ">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                    </div>
                 </div>
+
+                <h2 class="text-2xl font-bold -mt-10 mb-1">
+                    À propos
+                </h2>
+
+                <div class="text-justify">
+                    <h3 class="text-xl font-semibold mt-4">
+                        Informations
+                    </h3>
+                    <p class="mb-2">
+                        Ce site permet de repérer facilement certains lieux utiles au quotidien pour les cyclistes de Paris et de sa banlieue en proposant une carte interactive des arceaux vélos, des fontaines, des stations de réparation, des toilettes ainsi que des stations vélib. 
+                    </p>
+                    <p class="mb-2">
+                        Les données sont issues d'<a href="https://www.openstreetmap.org/copyright">openstreetmap</a> (<a href="https://www.openstreetmap.fr/contribuer/">découvrez comment contribuer</a>) ainsi que de l'open data de la mairie de Paris (sous licence <a href="https://opendata.paris.fr/page/lalicence/">OBdL</a>).
+                    </p>    
+                    <p>
+                        Les données sont mises à jour quotidiennement. 
+                    </p>
+                    <h3 class="text-xl font-semibold mt-4">
+                        Mentions légales
+                    </h3>
+                    <p>
+                        Site web hébargé chez OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.
+                    </p>
+                    <h3 class="text-xl font-semibold mt-4">
+                        Contact
+                    </h3>
+                    <p>
+                        <a href="mailto:rougevalentin@icloud.com">Mail</a>, <a href="https://twitter.com/Valred7">Twitter</a>
+                    </p>
+                </div>
+
+            </div> <!--popup à propos-->
+
+            <div id="map" class="w-full h-full"> <!--carte-->
+            <script src="map.js"></script>
+
             </div>
-
-            <h2 class="text-2xl font-bold -mt-10 mb-1">
-                À propos
-            </h2>
-            <div class="text-justify">
-                <h3 class="text-xl font-semibold mt-4">
-                    Informations
-                </h3>
-                <p class="mb-2">
-                    Ce site permet de repérer facilement certains lieux utiles au quotidien pour les cyclistes de Paris et de sa banlieue en proposant une carte interactive des arceaux vélos, des fontaines, des stations de réparation, des toilettes ainsi que des stations vélib. 
-                </p>
-                <p class="mb-2">
-                    Les données sont issues d'<a href="https://www.openstreetmap.org/copyright">openstreetmap</a> (<a href="https://www.openstreetmap.fr/contribuer/">découvrez comment contribuer</a>) ainsi que de l'open data de la mairie de Paris (sous licence <a href="https://opendata.paris.fr/page/lalicence/">OBdL</a>).
-                </p>    
-                <p>
-                    Les données sont mises à jour quotidiennement. 
-                </p>
-                <h3 class="text-xl font-semibold mt-4">
-                    Mentions légales
-                </h3>
-                <p>
-                    Site web hébargé chez OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.
-                </p>
-                <h3 class="text-xl font-semibold mt-4">
-                    Contact
-                </h3>
-                <p>
-                    <a href="mailto:rougevalentin@icloud.com">Mail</a>, <a href="https://twitter.com/Valred7">Twitter</a>
-                </p>
-            </div>
-
-
-            
-        </div> <!--popup à propos-->
-
-            <iframe  class="w-full h-full z-0" allowfullscreen src="https://umap.openstreetmap.fr/fr/map/paris-a-velo_506457?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=true&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&datalayers=1423631%2C1423632%2C1423630%2C1423629">
             
         </main>
     </div>
