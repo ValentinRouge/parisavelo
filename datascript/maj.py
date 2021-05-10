@@ -37,11 +37,11 @@ def updateParking(url):
 def updatePump(url):
     print("\nMISE A JOUR DU FICHIER POMPES\n")
 
-    if os.path.exists("pompes"):
-        os.remove("pompes")
+    if os.path.exists("pompesIDF.json"):
+        os.remove("pompesIDF.json")
         print("Fichier préexistant sur l'ordinateur supprimé")
 
-    wget.download(url,"pompes")
+    wget.download(url,"pompesIDF.json")
     print("\nFichier téléchargé")
 
 def updateFontaines(url):
@@ -63,7 +63,7 @@ if os.path.isfile("url.json")==True:
 os.chdir("../website/data")
 
 updateToilets(urls["toilettes"])
-updateVelib(urls["velib"])
+#updateVelib(urls["velib"])
 updateParking(urls["parking"])
 updatePump(urls["pompe"])
 updateFontaines(urls["fontaines"])

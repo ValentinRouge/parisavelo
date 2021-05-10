@@ -37,10 +37,11 @@ const ToiletMarkers = L.markerClusterGroup({
 });
 
 const ToiletIcon = L.icon({
-    iconUrl: "images/restroom.png", 
-    iconSize: [40,40], 
-    iconAnchor: [20,20]
+    iconUrl: "images/toilettesNC.png", 
+    iconSize: [30,30], 
+    iconAnchor: [15,15]
 });
+
 
 async function fetchToiletsData() {
     const loc = [];
@@ -76,10 +77,11 @@ const FontaineMarkers = L.markerClusterGroup({
 });
 
 const FontaineIcon = L.icon({
-    iconUrl: "images/fontaine.png", 
-    iconSize: [40,40], 
-    iconAnchor: [20,20]
+    iconUrl: "images/fontaineNC.png", 
+    iconSize: [30,30], 
+    iconAnchor: [15,15]
 });
+
 
 async function fetchFontainesData() {
     const loc = [];
@@ -114,7 +116,7 @@ const ParkingMarkers = L.markerClusterGroup({
 });
 
 const ParkingIcon = L.icon({
-    iconUrl: "images/parking2.png", 
+    iconUrl: "images/parkingNC.png", 
     iconSize: [30,30], 
     iconAnchor: [15,15]
 });
@@ -149,3 +151,39 @@ async function fetchParkingData() {
     mymap.addLayer(ParkingMarkers);
 }
 fetchParkingData();
+
+
+const PumpMarkers = L.markerClusterGroup({
+    iconCreateFunction: function(cluster) {
+        return new L.DivIcon({ html: '<div><span>' + cluster.getChildCount() + '</span></div>', className: 'pump-cluster cluster', iconSize: new L.Point(40, 40) });
+	}
+});
+
+const PumpIcon = L.icon({
+    iconUrl: "images/outilsNC.png", 
+    iconSize: [30,30], 
+    iconAnchor: [15,15]
+});
+
+async function fetchPumpData() {
+    const loc = [];
+    const elements = (await (await fetch('./data/pompesIDF.json')).json()).elements;
+    for (let element of elements){
+        const parking = [];
+        parking.push(element.lat);
+        parking.push(element.lon);
+        loc.push(parking);
+    }
+    for (let locEl of loc){
+        const lL = L.latLng(locEl[0], locEl[1]);
+        try{
+            PumpMarkers.addLayer(L.marker(lL, {icon: PumpIcon}).bindPopup('<b>Pompes ou outils de réparation</b>'));
+        }
+        catch(err) {
+            console.log(err);
+            console.log(lL);
+        }
+    }
+    mymap.addLayer(PumpMarkers);
+}
+fetchPumpData();
