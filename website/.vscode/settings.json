@@ -1,0 +1,8 @@
+{
+    "liveServer.settings.https": {
+        "cert": "C:\\Users\\rouge\\OneDrive\\Maison\\code\\parisavelo\\parisavelo\\website\\https\\localhost.pem",
+        "key": "C:\\Users\\rouge\\OneDrive\\Maison\\code\\parisavelo\\parisavelo\\website\\https\\localhost.key",
+        "passphrase": "12345"
+    },
+    "liveServer.settings.port": 5501
+}
