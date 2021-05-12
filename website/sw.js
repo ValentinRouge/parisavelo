@@ -1,5 +1,8 @@
-const statiCacheName = 'site-static-000'
-const dynamicCacheName = 'site-dynamic-000'
+const statiCacheName = 'site-static-007';
+const dynamicCacheName = 'site-dynamic-007';
+const now = new Date();
+const DataCacheName = 'site-data-005'+now.getDate();
+
 const assets = [
     '/', 
     '/index.html',
@@ -13,35 +16,59 @@ const assets = [
     '/logo/192.png',
     '/logo/512.png',
     '/logo/512.ico',
-    '/images/logo_fontaine.png',
-    '/images/logo_parking.png',
-    '/images/logo_reparation.png',
-    '/images/logo_toilettes.png',
-    '/images/logo_velib.png',
+    '/images/fontaineNC.png',
+    '/images/parkingNC.png',
+    '/images/outilsNC.png',
+    '/images/toilettesNC.png',
+    '/images/fontaineTAS.png',
+    '/images/parkingTAS.png',
+    '/images/outilsTAS.png',
+    '/images/toilettesTAS.png',
     '/images/logo.svg',
-    '/manifest.json'
-]
+    '/images/loc.png',
+    '/manifest.json', 
+    '/map.js',
+    'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css', 
+    'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
+    'https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js',
+    'https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css'
+];
+const Dataassets = [
+    '/data/fontainesPARIS.geojson',
+    '/data/parkingIDF.json',
+    '/data/pompesIDF.json',
+    '/data/toilettesPARIS.geojson'
+];
 
 // install sw
 self.addEventListener('install', (evt) => {
     evt.waitUntil(
         caches.open(statiCacheName).then(cache => {
-            console.log('caching shell assets')
-            cache.addAll(assets)
+            console.log('caching shell assets');
+            cache.addAll(assets);
         })
     );
-})
+    evt.waitUntil(
+        caches.open(DataCacheName).then(cache => {
+            console.log('caching data assets');
+            cache.addAll(Dataassets);
+        })
+    );
+});
  // activate sw
 self.addEventListener('activate', (evt) => {
     evt.waitUntil(
         caches.keys().then(keys =>{
             return Promise.all(keys
-                .filter(key => key !== statiCacheName && key !== dynamicCacheName)
-                .map(key => caches.delete(key))    
-            )
+                .filter(key => key !== statiCacheName && key !== dynamicCacheName && key !== DataCacheName)
+                .map(key => {
+                    caches.delete(key)
+                    console.log("suppression de "+key);
+                } )    
+            );
         })
-    )
-})
+    );
+});
 
 //fetch event 
 self.addEventListener('fetch', (evt) => {
@@ -51,9 +78,8 @@ self.addEventListener('fetch', (evt) => {
                 return caches.open(dynamicCacheName).then(cache => {
                     cache.put(evt.request.url, fetchRes.clone());
                     return fetchRes
-                })
+                });
             });
         })
     );
-
 });

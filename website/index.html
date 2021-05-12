@@ -26,16 +26,14 @@
    crossorigin=""></script>
    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
-   <link rel="stylesheet" href="leaflet/cluster.css">
-
    
 </head>
 <body >
     <div class="flex flex-col h-full">    
-        <header class="flex flex-row flex-wrap items-center justify-end bg-gradient-to-b from-gray-200 to-gray-500 z-50">
+        <header class="flex flex-row flex-wrap items-center justify-end z-10 bg-paletteMoyenMoins shadow-2xl">
             <div class="flex-grow">
                 <div class="flex justify-between items-center">
-                    <h1 class="flex-grow text-3xl p-3 text-center font-extrabold">Paris à Vélo</h1>
+                    <h1 class="flex-grow text-paletteFonce text-3xl p-3 md:text-center font-extrabold">Paris à Vélo</h1>
                     <div class="px-2 cursor-pointer md:hidden" id="menuBTN">
                         <svg id="icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -45,10 +43,10 @@
                 
                 <div class="hidden text-right mr-3" id="navbar">
                     <div>
-                        <button class="-mt-1 mb-1 py-1 px-2 border-2 text-gray-600 rounded-lg border-gray-600 bg-gray-300 hover:bg-gray-500 hover:text-white active:bg-gray-900 focus:outline-none transition duration-300" id="PClegendeBTN">Légende</button>
+                        <button class="-mt-1 mb-1 button" id="PClegendeBTN">Légende</button>
                     </div> <!---->
                     <div>
-                        <button class="mb-1 py-1 px-2 border-2 text-gray-600 rounded-lg border-gray-600 bg-gray-300 hover:bg-gray-500 hover:text-white active:bg-gray-900 focus:outline-none transition duration-300" id="PCaproposBTN">A propos</button>
+                        <button class="mb-1 button" id="PCaproposBTN">A propos</button>
                     </div> <!---->
                 </div>
             </div>
@@ -57,8 +55,8 @@
             
             <nav class="hidden md:block"> <!--ensenble des 2 btn pr nav-->
                 <div class="text-lg -space-x-1.5 mr-3"> 
-                    <button class="py-1 px-2 border-2 text-gray-600 rounded-lg rounded-r-none border-gray-600 bg-gray-300 hover:bg-gray-500 hover:text-white active:bg-gray-900 focus:outline-none transition duration-300" id="legendeBTN">Légende</button>
-                    <button class="py-1 px-2 border-2 text-gray-600 rounded-lg rounded-l-none border-gray-600 bg-gray-300 hover:bg-gray-500 hover:text-white active:bg-gray-900 focus:outline-none transition duration-300" id="aproposBTN">A propos</button>
+                    <button class="rounded-r-none button" id="legendeBTN">Légende</button>
+                    <button class="rounded-l-none button" id="aproposBTN">A propos</button>
                 </div>
             </nav>
         </header>
@@ -67,7 +65,7 @@
         <main class="relative flex-grow w-full">
            
             <!--popup Légende-->
-            <div class="relative hidden popup" id="legendePOPUP">
+            <div class="hidden popup shadow-xl" id="legendePOPUP">
                 <!--icon-->
                 <div class="sticky w-full top-0" id="closeBTN_legendePOPUP">
                     <div class="flex flex-row-reverse ">
@@ -81,39 +79,33 @@
                     Légende
                 </h2>
                 <div class="flex flex-wrap items-center">
-                    <img class="h-10 mr-2 my-1" src="images/logo_parking.png" alt="une bulle verte avec un logo vélo" id="img_legende" title="pictogramme parking">
+                    <img class="h-10 mr-2 my-1" src="images/parkingNC.png" alt="une bulle verte avec un logo vélo" id="img_legende" title="pictogramme parking">
                     <p class="text-justify">
                         Les arceaux a vélo
                     </p>
                 </div>
                 <div class="flex items-center">
-                    <img class="h-10 mr-2 my-1" src="images/logo_reparation.png" alt="une bulle rouge avec des outils" id="img_legende" title="pictogramme station de réparation">
+                    <img class="h-10 mr-2 my-1" src="images/outilsNC.png" alt="une bulle rouge avec des outils" id="img_legende" title="pictogramme station de réparation">
                     <p class="text-justify">
-                        Les pompes à vélo en libre service (souvent station de réparation ou véloboxe)
+                        Les pompes à vélo et outils en libre service (souvent station de réparation ou véloboxe)
                     </p>
                 </div>
                 <div class="flex items-center">
-                    <img class="h-10 mr-2 my-1" src="images/logo_fontaine.png" alt="une bulle bleu claire avec un verre d'eau" id="img_legende" title="pictogramme fontaine">
+                    <img class="h-10 mr-2 my-1" src="images/fontaineNC.png" alt="une bulle bleu claire avec un verre d'eau" id="img_legende" title="pictogramme fontaine">
                     <p class="text-justify">
                         Les fontaines
                     </p>
                 </div>
                 <div class="flex items-center">  
-                    <img class="h-10 mr-2 my-1" src="images/logo_toilettes.png" alt="une bulle bleu foncée avec un logo toilettes" id="img_legende" title="pictogramme toilettes">
+                    <img class="h-10 mr-2 my-1" src="images/toilettesNC.png" alt="une bulle bleu foncée avec un logo toilettes" id="img_legende" title="pictogramme toilettes">
                     <p class="text-justify">
                         Les toilettes (souvent accompagné d'un point d'eau, notamment à l'arrière des sanisettes)
-                    </p>
-                </div>
-                <div class="flex items-center">
-                    <img class="h-10 mr-2 my-1" src="images/logo_velib.png" alt="une bulle jaune avec le logo vélib" id="img_legende" title="pictogramme station vélib">
-                    <p class="text-justify">
-                        Les stations vélib
                     </p>
                 </div>
             </div> <!--popup légende-->
 
            <!--popup A propos-->
-           <div class="relative hidden popup" id="aproposPOPUP">
+           <div class="hidden popup" id="aproposPOPUP">
             <!--icon-->
                 <div class="sticky w-full top-0" id="closeBTN_aproposPOPUP">
                     <div class="flex flex-row-reverse ">
@@ -144,7 +136,7 @@
                         Mentions légales
                     </h3>
                     <p>
-                        Site web hébargé chez OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.
+                        Site web hébergé chez OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.
                     </p>
                     <h3 class="text-xl font-semibold mt-4">
                         Contact
@@ -156,10 +148,14 @@
 
             </div> <!--popup à propos-->
 
-            <div id="map" class="w-full h-full"> <!--carte-->
-            <script src="map.js"></script>
+
+            
+            <div id="map" class="w-full h-full z-0"> 
+            
+                <script src="map.js"></script>
 
             </div>
+            
             
         </main>
     </div>

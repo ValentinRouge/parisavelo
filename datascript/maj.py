@@ -14,16 +14,6 @@ def updateToilets(url):
     print("\nFichier téléchargé")
 
 
-def updateVelib(url):
-    print("\nMISE A JOUR DU FICHIER STATIONS VELIB\n")
-
-    if os.path.exists("velib.kml"):
-        os.remove("velib.kml")
-        print("Fichier préexistant sur l'ordinateur supprimé")
-
-    wget.download(url,"velib.kml")
-    print("\nFichier téléchargé")
-
 def updateParking(url):
     print("\nMISE A JOUR DU FICHIER PARKING A VELO\n")
 
@@ -63,7 +53,6 @@ if os.path.isfile("url.json")==True:
 os.chdir("../website/data")
 
 updateToilets(urls["toilettes"])
-#updateVelib(urls["velib"])
 updateParking(urls["parking"])
 updatePump(urls["pompe"])
 updateFontaines(urls["fontaines"])

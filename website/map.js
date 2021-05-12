@@ -9,11 +9,17 @@ L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',
 
 // Localisation
 
-//mymap.locate({setView: true, maxZoom: 16, enableHighAccuracy: true});
+mymap.locate({setView: true, maxZoom: 16, enableHighAccuracy: true});
 
 function onLocationFound(e) {
 
-    L.marker(e.latlng).addTo(mymap);
+    let locIcon = L.icon({
+        iconUrl: "images/loc.png",
+        iconSize: [20,20],
+        iconAnchor: [10,10]
+    });
+
+    L.marker(e.latlng, {icon: locIcon}).addTo(mymap);
 
     mymap.stopLocate();
 }
@@ -31,9 +37,9 @@ function displaytoilets(){
     const ToiletMarkers = L.markerClusterGroup({
         iconCreateFunction: function(cluster) {
             return new L.icon({
-                iconUrl: "images/toilettesTAST.png",
-                iconSize: [30,30],
-                iconAnchor: [15,15]
+                iconUrl: "images/toilettesTAS.png",
+                iconSize: [40,40],
+                iconAnchor: [20,20]
             });	
         }
     });
@@ -76,9 +82,9 @@ function displayFontaines() {
     const FontaineMarkers = L.markerClusterGroup({
         iconCreateFunction: function(cluster) {
             return new L.icon({
-                iconUrl: "images/fontaineTAST.png",
-                iconSize: [30,30],
-                iconAnchor: [15,15]
+                iconUrl: "images/fontaineTAS.png",
+                iconSize: [40,40],
+                iconAnchor: [20,20]
             });
         }
     });
@@ -121,9 +127,9 @@ function displatParking() {
     const ParkingMarkers = L.markerClusterGroup({
         iconCreateFunction: function(cluster) {
             return new L.icon({
-                iconUrl: "images/parkingTAST.png",
-                iconSize: [30,30],
-                iconAnchor: [15,15]
+                iconUrl: "images/parkingTAS.png",
+                iconSize: [40,40],
+                iconAnchor: [20,20]
             });	
         }
     });
@@ -180,9 +186,9 @@ function displayPompes(){
     const PumpMarkers = L.markerClusterGroup({
         iconCreateFunction: function(cluster) {
             return new L.icon({
-                iconUrl: "images/outilsTAST.png",
-                iconSize: [30,30],
-                iconAnchor: [15,15]
+                iconUrl: "images/outilsTAS.png",
+                iconSize: [40,40],
+                iconAnchor: [20,20]
             });
         }
     });

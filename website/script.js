@@ -1,11 +1,11 @@
 /*service worker*/
-/*
+
 if ('serviceWorker' in navigator){
     navigator.serviceWorker.register('./sw.js')
     .then((reg) => console.log('service worker register', reg))
     .catch((err) => console.log('service worker not register', err))
 }
-*/
+
 document.addEventListener('DOMContentLoaded', function() {
     const menuBTN = document.querySelector("#menuBTN");
     const navBar = document.querySelector("#navbar");
@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     menuBTN.addEventListener('click', () => {
         navBar.classList.toggle("hidden");
-        console.log(icon);
         icon.classList.toggle("transition");
         icon.classList.toggle("transform");
         icon.classList.toggle("-rotate-90"); 
