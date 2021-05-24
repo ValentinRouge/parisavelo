@@ -28,8 +28,8 @@ const assets = [
     '/images/loc.png',
     '/manifest.json', 
     '/map.js',
-    'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css', 
-    'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
+    '/leaflet/leaflet.css', 
+    '/leaflet/leaflet.js',
     'https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js',
     'https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css'
 ];
