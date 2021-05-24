@@ -16,7 +16,8 @@ function onLocationFound(e) {
     let locIcon = L.icon({
         iconUrl: "images/loc.png",
         iconSize: [20,20],
-        iconAnchor: [10,10]
+        iconAnchor: [10,10],
+        popupAnchor: [0,-13]
     });
 
     L.marker(e.latlng, {icon: locIcon}).addTo(mymap);
@@ -47,7 +48,8 @@ function displaytoilets(){
     const ToiletIcon = L.icon({
         iconUrl: "images/toilettesNC.png", 
         iconSize: [30,30], 
-        iconAnchor: [15,15]
+        iconAnchor: [15,15],
+        popupAnchor: [0,-13]
     });
     
     
@@ -63,7 +65,7 @@ function displaytoilets(){
         for (let locEl of loc){
             const lL = L.latLng(locEl[0][1], locEl[0][0]);
             try{
-                ToiletMarkers.addLayer(L.marker(lL, {icon: ToiletIcon}).bindPopup('<b>Toilettes</b><br>Horaires : '+ locEl[1]));
+                ToiletMarkers.addLayer(L.marker(lL, {icon: ToiletIcon}).bindPopup('<b>Toilettes</b><br>Horaires : '+ locEl[1]).on('click', function() {this.openPopup();}));
             }
             catch(err) {
                 console.log(err);
@@ -92,7 +94,8 @@ function displayFontaines() {
     const FontaineIcon = L.icon({
         iconUrl: "images/fontaineNC.png", 
         iconSize: [30,30],
-        iconAnchor: [15,15]
+        iconAnchor: [15,15],
+        popupAnchor: [0,-13]
     });
     
     
@@ -108,7 +111,7 @@ function displayFontaines() {
         for (let locEl of loc){
             const lL = L.latLng(locEl[1], locEl[0]);
             try{
-                FontaineMarkers.addLayer(L.marker(lL, {icon: FontaineIcon}).bindPopup('<b>Toilettes</b><br>Disponible : '+ locEl[2]));
+                FontaineMarkers.addLayer(L.marker(lL, {icon: FontaineIcon}).bindPopup('<b>Toilettes</b><br>Disponible : '+ locEl[2]).on('click', function() {this.openPopup();}));
             }
             catch(err) {
                 console.log(err);
@@ -129,7 +132,8 @@ function displatParking() {
             return new L.icon({
                 iconUrl: "images/parkingTAS.png",
                 iconSize: [40,40],
-                iconAnchor: [20,20]
+                iconAnchor: [20,20],
+                popupAnchor: [0,-13]
             });	
         }
     });
@@ -169,7 +173,7 @@ function displatParking() {
         for (let locEl of loc){
             try{
                 const lL = L.latLng(locEl[0], locEl[1]);
-                ParkingMarkers.addLayer(L.marker(lL, {icon: ParkingIcon}).bindPopup('<b>Parking a vélo</b><br>Nombre de places : '+ locEl[2]));
+                ParkingMarkers.addLayer(L.marker(lL, {icon: ParkingIcon}).bindPopup('<b>Parking a vélo</b><br>Nombre de places : '+ locEl[2]).on('click', function() {this.openPopup();}));
 
             }
             catch(err){
@@ -196,7 +200,8 @@ function displayPompes(){
     const PumpIcon = L.icon({
         iconUrl: "images/outilsNC.png", 
         iconSize: [30,30], 
-        iconAnchor: [15,15]
+        iconAnchor: [15,15],
+        popupAnchor: [0,-13]
     });
     
     async function fetchPumpData() {
@@ -217,7 +222,7 @@ function displayPompes(){
             
             const lL = L.latLng(locEl[0], locEl[1]);
             try{
-                PumpMarkers.addLayer(L.marker(lL, {icon: PumpIcon}).bindPopup('<b>Pompes ou outils de réparation</b>'));
+                PumpMarkers.addLayer(L.marker(lL, {icon: PumpIcon}).bindPopup('<b>Pompes ou outils de réparation</b>').on('click', function() {this.openPopup();}));
             }
             catch(err) {
                 console.log(err);
