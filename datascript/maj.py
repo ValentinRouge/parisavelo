@@ -1,6 +1,7 @@
 import wget
 import os
 import json
+import platform
 
 
 def updateToilets(url):
@@ -50,7 +51,15 @@ if os.path.isfile("url.json")==True:
     with open("url.json") as url_file:
         urls=json.load(url_file)
 
-os.chdir("../website/data")
+
+if not os.path.exists('../website/data'):
+    os.makedirs('../website/data')
+    if platform.system() == "Linux":
+        os.chdir("../website")
+        os.system("chmod a+wr data")
+        os.chdir("/data")
+else:
+    os.chdir("../website/data")
 
 updateToilets(urls["toilettes"])
 updateParking(urls["parking"])
