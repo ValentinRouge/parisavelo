@@ -7,6 +7,8 @@ function onLocationFound(e) {
         popupAnchor: [0,-13]
     });
 
+    Loc = e.latlng;
+
     L.marker(e.latlng, {icon: locIcon}).addTo(mymap);
 
     mymap.stopLocate();
@@ -48,7 +50,7 @@ function displaytoilets(){
         for (let locEl of loc){
             const lL = L.latLng(locEl[0][1], locEl[0][0]);
             try{
-                ToiletMarkers.addLayer(L.marker(lL, {icon: ToiletIcon}).bindPopup('<b>Toilettes</b><br>Horaires : '+ locEl[1]).on('click', function() {this.openPopup();}));
+                ToiletMarkers.addLayer(L.marker(lL, {icon: ToiletIcon}).bindPopup(`<b>Toilettes</b><br>Horaires : + ${locEl[1]} <br> ${createGoButton(lL)}`).on('click', function() {this.openPopup();}).on('popupopen', updatePopup));
             }
             catch(err) {
                 console.log(err);
@@ -93,7 +95,7 @@ function displayFontaines() {
         for (let locEl of loc){
             const lL = L.latLng(locEl[1], locEl[0]);
             try{
-                FontaineMarkers.addLayer(L.marker(lL, {icon: FontaineIcon}).bindPopup('<b>Toilettes</b><br>Disponible : '+ locEl[2]).on('click', function() {this.openPopup();}));
+                FontaineMarkers.addLayer(L.marker(lL, {icon: FontaineIcon}).bindPopup(`<b>Fontaine</b><br>Disponible : ${locEl[2]} <br> ${createGoButton(lL)}`).on('click', function() {this.openPopup();}).on('popupopen', updatePopup));
             }
             catch(err) {
                 console.log(err);
@@ -154,7 +156,7 @@ function displatParking() {
         for (let locEl of loc){
             try{
                 const lL = L.latLng(locEl[0], locEl[1]);
-                ParkingMarkers.addLayer(L.marker(lL, {icon: ParkingIcon}).bindPopup('<b>Parking a vélo</b><br>Nombre de places : '+ locEl[2]).on('click', function() {this.openPopup();}));
+                ParkingMarkers.addLayer(L.marker(lL, {icon: ParkingIcon}).bindPopup(`<b>Parking a vélo</b><br>Nombre de places : ${locEl[2]} <br> ${createGoButton(lL)}`).on('click', function() {this.openPopup();}).on('popupopen', updatePopup));
 
             }
             catch(err){
@@ -203,7 +205,7 @@ function displayPompes(){
             
             const lL = L.latLng(locEl[0], locEl[1]);
             try{
-                PumpMarkers.addLayer(L.marker(lL, {icon: PumpIcon}).bindPopup('<b>Pompes ou outils de réparation</b>').on('click', function() {this.openPopup();}));
+                PumpMarkers.addLayer(L.marker(lL, {icon: PumpIcon}).bindPopup(`<b>Pompes ou outils de réparation</b>') <br> ${createGoButton(lL)}`).on('click', function() {this.openPopup();}).on('popupopen', updatePopup));
             }
             catch(err) {
                 console.log(err);
@@ -215,6 +217,23 @@ function displayPompes(){
     fetchPumpData();
 }
 
+function createGoButton(coordinates){
+    return `<a target="_blank" href="https://geovelo.fr/paris/route?to=${coordinates.lng},${coordinates.lat}&from=">Y aller</a>`;
+}
+
+function updatePopup(event){
+
+    var clickedItem = event.target;
+
+    var popupContent = clickedItem.getPopup().getContent();
+
+    var popupContentARRAY = popupContent.split("&from=");
+
+    popupContent = popupContentARRAY[0] + "&from=" + Loc.lng + "," + Loc.lat + popupContentARRAY[1];
+
+    clickedItem.setPopupContent(popupContent);
+}
+
 const mymap = L.map('map').setView([48.86, 2.3488000], 13);
 
 L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
@@ -223,8 +242,13 @@ L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
 }).addTo(mymap);
 
-// Localisation
+var PumpMarkers;
+var ParkingMarkers;
+var FontaineMarkers;
+var ToiletMarkers;
+var Loc;
 
+// Localisation
 mymap.locate({setView: true, maxZoom: 16, enableHighAccuracy: true});
 
 L.control.scale().addTo(mymap);
@@ -232,11 +256,6 @@ L.control.scale().addTo(mymap);
 mymap.on('locationerror', onLocationError);
 
 mymap.on('locationfound', onLocationFound);
-
-var PumpMarkers;
-var ParkingMarkers;
-var FontaineMarkers;
-var ToiletMarkers;
 
 displaytoilets(); 
 displayFontaines();

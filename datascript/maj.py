@@ -56,7 +56,7 @@ if not os.path.exists('../website/data'):
     os.makedirs('../website/data')
     if platform.system() == "Linux":
         os.chdir("../website")
-        os.system("chmod a+wr data")
+        os.system("sudo chmod a+wr data")
         os.chdir("/data")
 else:
     os.chdir("../website/data")
