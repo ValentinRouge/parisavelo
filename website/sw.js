@@ -1,7 +1,7 @@
-const statiCacheName = 'site-static-007';
-const dynamicCacheName = 'site-dynamic-007';
+const statiCacheName = 'site-static-2';
+const dynamicCacheName = 'site-dynamic-2';
 const now = new Date();
-const DataCacheName = 'site-data-005'+now.getDate();
+const DataCacheName = 'site-data'+now.getDate();
 
 const assets = [
     '/', 

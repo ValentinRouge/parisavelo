@@ -1,16 +1,3 @@
-const mymap = L.map('map').setView([48.86, 2.3488000], 13);
-
-L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    minZoom: 0,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-}).addTo(mymap);
-
-
-// Localisation
-
-mymap.locate({setView: true, maxZoom: 16, enableHighAccuracy: true});
-
 function onLocationFound(e) {
 
     let locIcon = L.icon({
@@ -29,20 +16,16 @@ function onLocationError(e) {
     alert(e.message);
 }
 
-mymap.on('locationerror', onLocationError);
-
-mymap.on('locationfound', onLocationFound);
-
-
 function displaytoilets(){
-    const ToiletMarkers = L.markerClusterGroup({
+    ToiletMarkers = L.markerClusterGroup.layerSupport({
         iconCreateFunction: function(cluster) {
             return new L.icon({
                 iconUrl: "images/toilettesTAS.png",
                 iconSize: [40,40],
                 iconAnchor: [20,20]
             });	
-        }
+        }, 
+        chunkedLoading: true
     });
     
     const ToiletIcon = L.icon({
@@ -79,9 +62,8 @@ function displaytoilets(){
     fetchToiletsData();
 };
 
-
 function displayFontaines() {
-    const FontaineMarkers = L.markerClusterGroup({
+    FontaineMarkers = L.markerClusterGroup.layerSupport({
         iconCreateFunction: function(cluster) {
             return new L.icon({
                 iconUrl: "images/fontaineTAS.png",
@@ -123,11 +105,10 @@ function displayFontaines() {
     
     
     fetchFontainesData();
-};
-
+}
 
 function displatParking() {
-    const ParkingMarkers = L.markerClusterGroup({
+    ParkingMarkers = L.markerClusterGroup.layerSupport({
         iconCreateFunction: function(cluster) {
             return new L.icon({
                 iconUrl: "images/parkingTAS.png",
@@ -184,10 +165,10 @@ function displatParking() {
         mymap.addLayer(ParkingMarkers);
     }
     fetchParkingData();
-};
+}
 
 function displayPompes(){
-    const PumpMarkers = L.markerClusterGroup({
+    PumpMarkers = L.markerClusterGroup.layerSupport({
         iconCreateFunction: function(cluster) {
             return new L.icon({
                 iconUrl: "images/outilsTAS.png",
@@ -234,7 +215,39 @@ function displayPompes(){
     fetchPumpData();
 }
 
+const mymap = L.map('map').setView([48.86, 2.3488000], 13);
+
+L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    minZoom: 0,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+}).addTo(mymap);
+
+// Localisation
+
+mymap.locate({setView: true, maxZoom: 16, enableHighAccuracy: true});
+
+L.control.scale().addTo(mymap);
+
+mymap.on('locationerror', onLocationError);
+
+mymap.on('locationfound', onLocationFound);
+
+var PumpMarkers;
+var ParkingMarkers;
+var FontaineMarkers;
+var ToiletMarkers;
+
 displaytoilets(); 
 displayFontaines();
 displayPompes();
 displatParking();
+
+
+var overlays = {
+    "Parkings à vélo": ParkingMarkers,
+    "Pompes": PumpMarkers,
+    "Fontaines": FontaineMarkers,
+    "Toilettes": ToiletMarkers,
+};
+new L.Control.Layers(null,overlays).addTo(mymap);
